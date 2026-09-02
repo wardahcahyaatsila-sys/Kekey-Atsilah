@@ -445,6 +445,33 @@
             Walimatul 'Ursy - Intimate Akad Nikah
         </div>
     </div>
+<!-- BANNER AMPLOP DIGITAL / HADIAH -->
+<section class="event-section" style="margin-top: 30px; padding: 25px; background: #ffffff; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;">
+  <h2 class="section-title" style="margin-bottom: 10px;">Amplop Digital</h2>
+  <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+    Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan hadiah, Anda dapat menyalurkannya melalui:
+  </p>
+
+  <!-- Rekening 1: Atsilah -->
+  <div style="border: 1px dashed #b89758; border-radius: 12px; padding: 15px; margin-bottom: 15px; background: #fdfbf7;">
+    <div style="font-weight: bold; color: #5c4d3c; font-size: 1.1rem;">SeaBank</div>
+    <div id="norek-1" style="font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; color: #b89758; margin: 8px 0;">901155067429</div>
+    <div style="font-size: 0.85rem; color: #777; margin-bottom: 10px;">a.n. Atsilah Wardah Cahya</div>
+    <button onclick="copyToClipboard('norek-1')" style="padding: 6px 15px; background: #5c4d3c; color: #fff; border: none; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">
+      <i class="fas fa-copy" style="margin-right: 5px;"></i> Salin No. Rekening
+    </button>
+  </div>
+
+  <!-- Rekening 2: Kekey -->
+  <div style="border: 1px dashed #b89758; border-radius: 12px; padding: 15px; background: #fdfbf7;">
+    <div style="font-weight: bold; color: #5c4d3c; font-size: 1.1rem;">SeaBank</div>
+    <div id="norek-2" style="font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; color: #b89758; margin: 8px 0;">901694450336</div>
+    <div style="font-size: 0.85rem; color: #777; margin-bottom: 10px;">a.n. Kekey Satya Viwandira</div>
+    <button onclick="copyToClipboard('norek-2')" style="padding: 6px 15px; background: #5c4d3c; color: #fff; border: none; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">
+      <i class="fas fa-copy" style="margin-right: 5px;"></i> Salin No. Rekening
+    </button>
+  </div>
+</section>
 
     <!-- Script Hitung Mundur -->
     <script>
@@ -506,6 +533,16 @@
       if (musicIcon) musicIcon.className = "fas fa-music";
     }).catch(err => console.log(err));
   }
+          // Fungsi Salin No Rekening
+  function copyToClipboard(elementId) {
+    const textToCopy = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      alert("Nomor rekening berhasil disalin: " + textToCopy);
+    }).catch(err => {
+      console.error('Gagal menyalin: ', err);
+    });
+  }
+
 </script>
 
 </body>
