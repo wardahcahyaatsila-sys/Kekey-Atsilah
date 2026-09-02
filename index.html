@@ -461,5 +461,42 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
+    <!-- Pemutar Musik -->
+<audio id="bg-music" loop>
+  <source src="ssstik.io_1788326084605.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Tombol Musik Floating -->
+<button id="music-control" onclick="toggleMusic()" style="position: fixed; bottom: 25px; right: 25px; z-index: 999; width: 45px; height: 45px; border-radius: 50%; background: #5c4d3c; color: #ffffff; border: 2px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+  <i id="music-icon" class="fas fa-music"></i>
+</button>
+
+<script>
+  const music = document.getElementById("bg-music");
+  const musicIcon = document.getElementById("music-icon");
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      music.pause();
+      musicIcon.className = "fas fa-volume-mute";
+    } else {
+      music.play();
+      musicIcon.className = "fas fa-music";
+    }
+    isPlaying = !isPlaying;
+  }
+
+  // Musik otomatis putar saat tamu pertama kali sentuh layar
+  document.addEventListener('click', function startAudio() {
+    if (!isPlaying) {
+      music.play().then(() => {
+        isPlaying = true;
+        musicIcon.className = "fas fa-music";
+      }).catch(() => {});
+    }
+  }, { once: true });
+</script>
+
 </body>
 </html>
