@@ -313,6 +313,17 @@
     </style>
 </head>
 <body>
+    <!-- Pop-up Cover Depan Undangan -->
+<div id="welcome-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfbf7; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box;">
+  <h3 style="font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; color: #5c4d3c; margin-bottom: 10px;">WALIMATUL 'URSY</h3>
+  <h1 style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: #b89758; margin: 10px 0;">Kekey & Atsilah</h1>
+  <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">Kepada Bapak/Ibu/Saudara/i<br>Kami mengundang Anda untuk hadir di pernikahan kami.</p>
+  
+  <button onclick="openInvitation()" style="padding: 12px 28px; background: #b89758; color: #ffffff; border: none; border-radius: 25px; font-weight: 500; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 15px rgba(184, 151, 88, 0.4);">
+    <i class="fas fa-envelope-open" style="margin-right: 8px;"></i> Buka Undangan
+  </button>
+</div>
+
 
     <div class="container">
         <!-- Header & Doa Pembuka -->
@@ -461,17 +472,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
-    <!-- Pemutar Musik -->
-<audio id="bg-music" loop>
-  <source src="ssstik.io_1788326084605.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Tombol Musik Floating -->
-<button id="music-control" onclick="toggleMusic()" style="position: fixed; bottom: 25px; right: 25px; z-index: 999; width: 45px; height: 45px; border-radius: 50%; background: #5c4d3c; color: #ffffff; border: 2px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px;">
-  <i id="music-icon" class="fas fa-music"></i>
-</button>
-
-<script>
+    <script>
   const music = document.getElementById("bg-music");
   const musicIcon = document.getElementById("music-icon");
   let isPlaying = false;
@@ -487,15 +488,14 @@
     isPlaying = !isPlaying;
   }
 
-  // Musik otomatis putar saat tamu pertama kali sentuh layar
-  document.addEventListener('click', function startAudio() {
-    if (!isPlaying) {
-      music.play().then(() => {
-        isPlaying = true;
-        musicIcon.className = "fas fa-music";
-      }).catch(() => {});
-    }
-  }, { once: true });
+  // Fungsi saat tombol "Buka Undangan" diklik
+  function openInvitation() {
+    document.getElementById("welcome-overlay").style.display = "none";
+    music.play().then(() => {
+      isPlaying = true;
+      if (musicIcon) musicIcon.className = "fas fa-music";
+    }).catch(err => console.log(err));
+  }
 </script>
 
 </body>
